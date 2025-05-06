@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All The Best Envelope Card</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff7e5f, #eb2d2a);
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .envelope {
+      position: relative;
+      width: 320px;
+      height: 230px;
+      background: pink;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 3.0s ease;
+    }
+    .envelope.open {
+      transform: scale(1.05);
+    }
+
+    .flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background: #ff6f61;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      transition: transform 0.3s ease;
+      transform-origin: top;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: rgb(247, 242, 242);
+      font-size: 0.9rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .envelope.open .flap {
+      transform: rotateX(180deg);
+    }
+
+    .card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      height: 90%;
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      opacity: 0;
+      transition: opacity 7.0s ease;
+    }
+    .envelope.open .card {
+      opacity: 1;
+    }
+
+    .card h1 {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+    .buttons button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 5.0s ease;
+    }
+    .buttons button:hover {
+      background-color: #45a049;
+    }
+
+    /* Floating hearts */
+    .floating-hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .floating-hearts .heart {
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      clip-path: polygon(50% 0%, 0% 50%, 50% 100%, 100% 50%);
+      position: absolute;
+      bottom: 0;
+      animation: float 5s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 0;
+      }
+      50% {
+        transform: translateY(-150px) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-300px) scale(0.8);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-hearts"></div>
+
+  <div class="envelope" onclick="this.classList.toggle('open')">
+    <div class="flap">Tap here please💌</div>
+    <div class="card">
+      <h1>_ MARYAM💕_</h1>
+      <p>All the best...!</p><br>
+      <p>You can do do this💝</p> <br>
+      <h5>[Always by your side]</h5>
+    </div>
+  </div>
+
+  <script>
+    const heartContainer = document.querySelector('.floating-hearts');
+
+    for (let i = 0; i < 200; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.animationDelay = Math.random() * 5 + 's';
+      heart.style.opacity = 0.1 + Math.random() * 0.1;
+      heart.style.width = heart.style.height = 10 + Math.random() * 20 + 'px';
+      heartContainer.appendChild(heart);
+    }
+  </script>
+</body>
+</html>
